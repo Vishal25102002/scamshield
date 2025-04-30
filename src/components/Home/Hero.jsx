@@ -1,8 +1,10 @@
-// HeroSection.jsx
+// HeroSection.jsx - Modified to use React Router
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Bot, Globe, Search, Mail, ChevronDown, Shield, ArrowRight } from 'lucide-react';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
   const [activeOption, setActiveOption] = useState(null);
 
@@ -26,6 +28,10 @@ const HeroSection = () => {
       color: 'from-pink-500 to-pink-600'
     },
   ];
+
+  const handleStartChatbot = () => {
+    navigate('/chatbot');
+  };
 
   return (
     <section id="home" className="relative min-h-screen flex items-center w-full overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 pb-12">
@@ -72,7 +78,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 className="px-8 py-4 bg-blue-600 text-white rounded-lg font-medium flex items-center justify-center hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-300/50 hover:-translate-y-1"
-                onClick={() => alert('Chatbot functionality coming soon!')}
+                onClick={handleStartChatbot}
               >
                 <Bot className="mr-2 h-5 w-5" />
                 Start Chatbot
@@ -190,6 +196,5 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
-
+} 
 export default HeroSection;
